@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 
 class CommontInput extends Component{
-    static propTypes = {
+    static PropTypes = {
         onSubmit: PropTypes.func
       }
     constructor(props){
@@ -15,7 +15,6 @@ class CommontInput extends Component{
     }
     componentWillMount(){
         this._loadUsername(); //持久化用户名
-        console.log(11)
     }
    
     componentDidMount(){
@@ -35,11 +34,11 @@ class CommontInput extends Component{
     clickBtn(){       //点击发布评论
         let list = {
             name:this.state.userName,
-            comment:this.state.comment
+            comment:this.state.comment,
+            createdTime:+new Date()
         }
         this.props.onSubmit(list);
         this.setState({
-            userName:'',
             comment:'',
         })
     }
@@ -48,14 +47,12 @@ class CommontInput extends Component{
     }
     _loadUsername(){
         const userName = localStorage.getItem('userName');
+        console.log(userName);
         if(userName){
             this.setState({userName:userName});
         }
     }
-    _saveComments(comments){
-        localStorage.setItem('comments',JSON.stringify(comments))
-  
-    }
+
     handleUsernameBlur(e){
         this._saveName(e.target.value);
     }
