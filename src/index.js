@@ -3,16 +3,34 @@ import ReactDOM from 'react-dom';
 
 import './index.css'
 
-import App from './App';
+// import App from './App';
 
-import Life from './component/Life';
+import Life from './page/Life';
 
-import LifeTwo from './component/Life2';
+import LifeTwo from './page/Life2';
 
-import LiftThree from './component/life_loadData'
+import LiftThree from './page/life_loadData'
 
-import DomOperation from './component/Dom_ref'  //用ref获取DOm
+import DomOperation from './page/Dom_ref' //用ref获取DOm
 
-import ShowBody from './component/PropHtml'  //属性里面可以写JSX语言
+import ShowBody from './page/PropHtml' //属性里面可以写JSX语言
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+
+
+
+
+
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import CommentApp from './containers/CommentApp'
+import commentsReducer from './reducers/comments'
+// ReactDOM.render(<ReduxIndex />, document.getElementById('root'));
+const store = createStore(commentsReducer)
+ReactDOM.render(<Provider store={store}>
+    <CommentApp/>
+ </Provider>,
+ document.getElementById('root')
+ );
