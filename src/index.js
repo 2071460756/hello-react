@@ -14,6 +14,7 @@ import LiftThree from './page/life_loadData'
 import DomOperation from './page/Dom_ref' //用ref获取DOm
 
 import ShowBody from './page/PropHtml' //属性里面可以写JSX语言
+import CommentApp from './container/CommentApp';
 
 
 
@@ -23,14 +24,10 @@ import ShowBody from './page/PropHtml' //属性里面可以写JSX语言
 
 
 
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import CommentApp from './containers/CommentApp'
-import commentsReducer from './reducers/comments'
-// ReactDOM.render(<ReduxIndex />, document.getElementById('root'));
-const store = createStore(commentsReducer)
-ReactDOM.render(<Provider store={store}>
-    <CommentApp/>
- </Provider>,
- document.getElementById('root')
- );
+
+
+ReactDOM.render(<CommentApp />, document.getElementById('root'));
+
+
+
+//  2018.9.13
